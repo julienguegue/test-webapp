@@ -1,27 +1,23 @@
 document.addEventListener("DOMContentLoaded", function() {
     const conversationButtonsContainer = document.getElementById('conversation-buttons');
     const conversationContentContainer = document.getElementById('conversation-content');
-
-    // Charger la liste des conversations depuis le fichier conversations.txt
-    fetch('conversations.txt')
-    .then(response => response.text())
-    .then(text => {
-        const conversations = text.split('\n');
-
-        // Créer un bouton pour chaque conversation
-        conversations.forEach(conversation => {
-            const button = document.createElement('button');
-            button.innerText = conversation;
-            button.classList.add('button');
-            button.addEventListener('click', function() {
-                // Charger le contenu de la conversation lorsque le bouton est cliqué
-                loadConversationContent(conversation);
-            });
-            conversationButtonsContainer.appendChild(button);
+    const conversations = [
+        "Sabine Schelz",
+        "Marc",
+        "Coloc de CS",
+        // Ajoutez d'autres conversations ici
+    ];
+    // Créer un bouton pour chaque conversation
+    conversations.forEach(conversation => {
+        const button = document.createElement('button');
+        button.innerText = conversation;
+        button.classList.add('button');
+        button.addEventListener('click', function() {
+            // Charger le contenu de la conversation lorsque le bouton est cliqué
+            loadConversationContent(conversation);
         });
-    })
-    .catch(error => console.error('Une erreur est survenue lors du chargement des conversations:', error));
-
+        conversationButtonsContainer.appendChild(button);
+            
     // Fonction pour charger le contenu de la conversation
     function loadConversationContent(conversation) {
         // Vous devez implémenter cette fonction en fonction de la manière dont vous stockez vos conversations
